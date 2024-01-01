@@ -32,7 +32,12 @@ class EnumAction(argparse.Action):
 
 
 parser = argparse.ArgumentParser()
-
+parser.add_argument("--model-name", type=str, default="flat2DAnimerge_v45Sharp.safetensors")
+parser.add_argument("--input-video", type=str, default="./test1.mp4", help="video to transfer style")
+parser.add_argument("--output-video", type=str, default="./result.mp4")
+parser.add_argument("--prompt-text", type=str, default="")
+parser.add_argument("--workflow-json", type=str, default="./simple.json")
+parser.add_argument("--frames", type=int, default=16, help="frame count")
 parser.add_argument("--listen", type=str, default="127.0.0.1", metavar="IP", nargs="?", const="0.0.0.0", help="Specify the IP address to listen on (default: 127.0.0.1). If --listen is provided without an argument, it defaults to 0.0.0.0. (listens on all)")
 parser.add_argument("--port", type=int, default=8188, help="Set the listen port.")
 parser.add_argument("--enable-cors-header", type=str, default=None, metavar="ORIGIN", nargs="?", const="*", help="Enable CORS (Cross-Origin Resource Sharing) with optional origin or allow all with default '*'.")
@@ -122,3 +127,4 @@ if args.windows_standalone_build:
 
 if args.disable_auto_launch:
     args.auto_launch = False
+
